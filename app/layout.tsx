@@ -30,7 +30,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Modal />
+        <Modal actionLabel="Submit" title="Hello World" isOpen />
         <Navbar />
         {children}
       </body>
