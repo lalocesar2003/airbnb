@@ -24,7 +24,7 @@ const Search = () => {
           items-center
           justify-between   
 
-        "
+               "
       >
         <div className="text-sm font-semibold px-6">Anywhere</div>
 
@@ -38,7 +38,6 @@ const Search = () => {
           </div>
         </div>
       </div>
-       
     </div>
   );
 };
