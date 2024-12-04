@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { IoMdClose } from "react-icons/io";
 import Button from "../Button";
+import { IoMdClose } from "react-icons/io";
+import React, { useCallback, useEffect, useState } from "react";
 
 interface ModalProps {
   isOpen?: boolean;
@@ -14,7 +14,7 @@ interface ModalProps {
   actionLabel: string;
   disabled?: boolean;
   secondaryAction?: () => void;
-  secondaryLabel?: string;
+  secondaryActionLabel?: string;
 }
 
 const Modal: React.FC<ModalProps> = ({
@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   actionLabel,
   disabled,
   secondaryAction,
-  secondaryLabel,
+  secondaryActionLabel,
 }) => {
   const [showModal, setShowModal] = useState(isOpen);
 
@@ -50,8 +50,10 @@ const Modal: React.FC<ModalProps> = ({
     if (disabled) {
       return;
     }
+
     onSubmit();
   }, [disabled, onSubmit]);
+
   const handleSecondaryAction = useCallback(() => {
     if (disabled || !secondaryAction) {
       return;
@@ -71,12 +73,12 @@ const Modal: React.FC<ModalProps> = ({
           {/* Content */}
           <div
             className={`
-          traslate 
-          duration-300
-          h-full 
-          ${showModal ? "translate-y-0" : "translate-y-full"}
-          ${showModal ? "opacity-100" : "opacity-0"}
-          `}
+            traslate 
+            duration-300
+            h-full 
+            ${showModal ? "translate-y-0" : "translate-y-full"}
+            ${showModal ? "opacity-100" : "opacity-0"}
+            `}
           >
             <div className="translate h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/* Header */}
@@ -91,11 +93,11 @@ const Modal: React.FC<ModalProps> = ({
               {/* Footer */}
               <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center gap-4 w-full">
-                  {secondaryAction && secondaryAction && (
+                  {secondaryAction && secondaryActionLabel && (
                     <Button
                       outline
                       disabled={disabled}
-                      label={secondaryAction}
+                      label={secondaryActionLabel}
                       onClick={handleSecondaryAction}
                     />
                   )}
