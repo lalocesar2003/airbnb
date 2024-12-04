@@ -46,12 +46,12 @@ const Modal: React.FC<ModalProps> = ({
     }, 300);
   }, [disabled, onClose]);
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = useCallback(async () => {
     if (disabled) {
       return;
     }
 
-    onSubmit();
+    await onSubmit(); // Si `onSubmit` es async, maneja la promesa
   }, [disabled, onSubmit]);
 
   const handleSecondaryAction = useCallback(() => {
